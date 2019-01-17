@@ -27,6 +27,13 @@ public final class MathBox<T extends Number> extends ObjectBox {
         }
     }
 
+    /**
+     * Run through array and if finds dublicate
+     * throws an Exception
+     * @param array
+     * @throws Exception
+     */
+
     public void checkForDublicates(final T[] array) throws Exception {
         List<T> set = new ArrayList<>();
         for (T i : array) {
@@ -36,8 +43,9 @@ public final class MathBox<T extends Number> extends ObjectBox {
     }
 
     /**
+     * Returns the sum of collection
      *
-     * @return
+     * @return int
      */
     public int summator() {
         int summ = 0;
