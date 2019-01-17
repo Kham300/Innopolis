@@ -1,4 +1,4 @@
-package algorithms;
+package main.java.algorithms;
 
 /**
  * The type Base alg.

@@ -1,4 +1,4 @@
-package algorithms;
+package main.java.algorithms;
 
 /**
  * Алгоритм Quick Sort является одним из самых быстрых алгоритмов сортировки.

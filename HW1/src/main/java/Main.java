@@ -1,6 +1,8 @@
-import algorithms.BubbleSort;
-import algorithms.Generator;
-import algorithms.QuickSort;
+package main.java;
+
+import main.java.algorithms.BubbleSort;
+import main.java.algorithms.Generator;
+import main.java.algorithms.QuickSort;
 import com.google.common.base.Stopwatch;
 
 import java.util.concurrent.TimeUnit;
