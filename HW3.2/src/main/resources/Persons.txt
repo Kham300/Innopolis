@@ -1,0 +1,5 @@
+name=Ivan age=20
+name=John age=30
+name=Kate age=25
+name=Kelly age=40
+name=Sergey age=35

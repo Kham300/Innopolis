@@ -1,16 +1,14 @@
 package main.java.generics;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 /**
  * The type Object box.
  */
 public class ObjectBox {
 
-     List collection;
+    List collection;
+
     /**
      * Instantiates a new Object box.
      */
@@ -29,7 +27,7 @@ public class ObjectBox {
      *
      * @param o the Object
      */
-    public void add(final Object o){
+    public void add(final Object o) {
         collection.add(o);
     }
 
@@ -39,7 +37,7 @@ public class ObjectBox {
      *
      * @param o the Object
      */
-    public void delete(final Object o){
+    public void delete(final Object o) {
         collection.remove(o);
     }
 
@@ -50,9 +48,24 @@ public class ObjectBox {
      *
      * @return the string
      */
-    public String dump(){
+    public String dump() {
         StringBuilder stringBuilder = new StringBuilder();
         collection.forEach(o -> stringBuilder.append(o.toString()).append("; "));
         return stringBuilder.toString();
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(collection);
+
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ObjectBox objectBox = (ObjectBox) o;
+        return this.hashCode() == objectBox.hashCode();
+    }
+
 }

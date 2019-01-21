@@ -1,11 +1,7 @@
-package main.java;
-
+import algorithms.StopWatch;
 import main.java.algorithms.BubbleSort;
 import main.java.algorithms.Generator;
 import main.java.algorithms.QuickSort;
-import com.google.common.base.Stopwatch;
-
-import java.util.concurrent.TimeUnit;
 
 /**
  * The type Main.
@@ -24,7 +20,7 @@ public class Main {
         Generator generator = new Generator(numberOfElements);
         QuickSort quickSort = new QuickSort();
         BubbleSort bubbleSort = new BubbleSort();
-        Stopwatch stopwatch = Stopwatch.createUnstarted();
+        StopWatch stopwatch = new StopWatch();
 
         System.out.println("***Cравнение сортировок разной временной сложности для одинаковых входных данных***");
         System.out.println("====================================================================================");
@@ -41,7 +37,7 @@ public class Main {
         /**
          * QuickSort one of the fastest
          */
-        stopwatch.reset();
+        stopwatch.stop();
         stopwatch.start();
         quickSort.doSort(generator.getArray());
         stopwatch.stop();
@@ -52,13 +48,12 @@ public class Main {
 
     }
 
-    private static void printElapsedTime(final Stopwatch stopwatch) {
+    private static void printElapsedTime(final StopWatch stopwatch) {
         if (stopwatch.isRunning()) {
             System.out.println("WARNING! Your stopwatch is still running!");
         } else // stopwatch not running
         {
-            System.out.println("\t" + stopwatch.elapsed(TimeUnit.MILLISECONDS) + " milliseconds");
-            System.out.println("\t" + stopwatch.elapsed(TimeUnit.NANOSECONDS) + " nanoseconds");
+            System.out.println("\t" + stopwatch.elapsed() + " nanoseconds");
         }
     }
 
