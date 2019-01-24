@@ -1,7 +1,8 @@
+import algorithms.BubbleSort;
+import algorithms.Generator;
+import algorithms.QuickSort;
 import algorithms.StopWatch;
-import main.java.algorithms.BubbleSort;
-import main.java.algorithms.Generator;
-import main.java.algorithms.QuickSort;
+
 
 /**
  * The type Main.

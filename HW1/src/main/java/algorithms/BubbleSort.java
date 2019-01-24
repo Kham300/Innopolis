@@ -1,11 +1,11 @@
-package main.java.algorithms;
+package algorithms;
 
 /**
  * The type Bubble sort.
  * Временная сложность алгоритма O(n^2)
  * Одна из самых неэфективных сортировок
  */
-public class BubbleSort extends BaseAlg {
+public class BubbleSort extends main.java.algorithms.BaseAlg {
 
     public void doSort(Integer[] a) {
         for (int i = 0; i < a.length - 1; i++)

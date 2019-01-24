@@ -25,6 +25,7 @@ public class Util {
      * @param res     the res
      */
     static void getOccurencies(String[] sources, String[] words, String res) {
+
         int numberThreads = 4;
 
         try {
@@ -64,7 +65,6 @@ public class Util {
      * @param futures the futures
      */
     static void writeToFile(final String path, List<Future<ArrayList<String>>> futures) {
-
 
         try {
             FileWriter writer = new FileWriter(path + "output.txt");

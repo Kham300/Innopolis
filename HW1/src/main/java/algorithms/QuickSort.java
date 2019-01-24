@@ -1,11 +1,11 @@
-package main.java.algorithms;
+package algorithms;
 
 /**
  * Алгоритм Quick Sort является одним из самых быстрых алгоритмов сортировки.
  * Его среднее время выполнения - O(n log n).
  * Quick Sort реализуется с помощью рекурсии.
  */
-public class QuickSort extends BaseAlg {
+public class QuickSort extends main.java.algorithms.BaseAlg {
 
     @Override
     public void doSort(Integer[] a) {

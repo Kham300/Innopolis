@@ -8,6 +8,7 @@ import java.util.*;
 public class ObjectBox {
 
     List collection;
+    int id = 1;
 
     /**
      * Instantiates a new Object box.
