@@ -15,7 +15,11 @@ public class Main {
         StopWatch stopWatch = new StopWatch();
 
         stopWatch.start();
-        Util.getOccurencies(null, null, outputPath);
+
+        for (int i = 0; i < 5; i ++){
+            Util.getOccurencies(null, null, outputPath);
+        }
+
         stopWatch.stop();
 
         System.out.println("Time: " + stopWatch.toString());
