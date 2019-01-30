@@ -224,9 +224,9 @@ public class ClassInfo {
      * @param path the path
      * @return the hash map
      */
-    public HashMap readFile(final String path) {
+    public Map readFile(final String path) {
 
-        HashMap<String, String> result = new HashMap<>();
+        Map<String, String> result = new HashMap<>();
         String value, line;
         Scanner scanner = null;
         try {
@@ -265,7 +265,7 @@ public class ClassInfo {
      * @throws InstantiationException the instantiation exception
      */
     public void deserialize(final String path) throws ClassNotFoundException, IllegalAccessException, InstantiationException {
-        HashMap<String, String> hashMap = readFile(path);
+        Map<String, String> hashMap = readFile(path);
 
         Class c = Class.forName(hashMap.get("class"));
         Object o = c.newInstance();

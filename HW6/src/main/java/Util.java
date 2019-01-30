@@ -73,7 +73,6 @@ public class Util {
         }
         Iterable<? extends JavaFileObject> compilationUnits = fileManager.getJavaFileObjectsFromFiles(Arrays.asList(sourceFile));
         compiler.getTask(null, fileManager, null, null, null, compilationUnits).
-
                 call();
         try {
             fileManager.close();

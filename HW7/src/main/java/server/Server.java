@@ -113,7 +113,6 @@ public class Server implements Runnable{
 				pos = threads.indexOf(st);
 			}
 		}
-		
 		return pos;
 	}
 
