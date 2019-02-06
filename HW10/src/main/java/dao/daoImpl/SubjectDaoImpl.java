@@ -1,8 +1,10 @@
-package main.java.dao.daoImpl;
+package dao.daoImpl;
 
+import dao.SubjectDao;
 import main.java.Person;
 import main.java.Subject;
-import main.java.dao.SubjectDao;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,15 +15,37 @@ import java.util.Collection;
 import java.util.List;
 
 public class SubjectDaoImpl implements SubjectDao {
+
+    private static final Logger LOGGER
+            = LoggerFactory.getLogger(SubjectDaoImpl.class);
+
     private Connection connection;
-    PreparedStatement preparedStatement = null;
+    private PreparedStatement preparedStatement = null;
 
     public SubjectDaoImpl(Connection connection) {
         this.connection = connection;
     }
 
+    private void closeStatement() {
+        try {
+            this.preparedStatement.close();
+        } catch (SQLException e) {
+            LOGGER.error("Ошибка при закрытии preparedStatement: ", e.getMessage());
+
+        }
+    }
+
+    private void closeConnection() {
+        try {
+            this.connection.close();
+        } catch (SQLException e) {
+            LOGGER.error("Ошибка при закрытии коннекта: ", e.getMessage());
+        }
+    }
+
+
     @Override
-    public Collection<Subject> getAllSubjects() throws SQLException {
+    public Collection<Subject> getAllSubjects() {
         List<Subject> list = new ArrayList<>();
         try {
             preparedStatement = connection.prepareStatement("select * from postgres.testschema.subject");
@@ -31,24 +55,22 @@ public class SubjectDaoImpl implements SubjectDao {
             }
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+
+            LOGGER.error("Ошибка при получении всех subject: \n", e.getMessage());
+
         } finally {
             if (preparedStatement != null) {
-                preparedStatement.close();
+                closeStatement();
             }
             if (connection != null) {
-                try {
-                    connection.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
+                closeConnection();
             }
         }
         return null;
-}
+    }
 
     @Override
-    public Collection<Subject> getSubjectsByPerson(Person person) throws SQLException {
+    public Collection<Subject> getSubjectsByPerson(Person person) {
         List<Subject> list = new ArrayList<>();
         try {
             preparedStatement = connection.prepareStatement("select * from postgres.testschema.course a, postgres.testschema.subject b where person_id = ? and a.subject_id = b.subject_id");
@@ -59,15 +81,17 @@ public class SubjectDaoImpl implements SubjectDao {
             }
 
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            LOGGER.error("Ошибка при получении subject: \n", e.getMessage());
+
         } finally {
             if (preparedStatement != null) {
-                preparedStatement.close();
+                closeStatement();
             }
             if (connection != null) {
-                connection.close();
+                closeConnection();
             }
         }
         return null;
     }
+
 }

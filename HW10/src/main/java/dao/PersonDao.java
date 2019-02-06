@@ -1,22 +1,56 @@
-package main.java.dao;
+package dao;
 
 import main.java.Person;
 import main.java.Subject;
 
-import java.sql.SQLException;
 import java.util.Collection;
 
+/**
+ * The interface Person dao.
+ */
 public interface PersonDao {
 
-    Collection<Person> getAllPersonsBySubject(Subject subject) throws SQLException;
+    /**
+     * Gets all persons by subject.
+     *
+     * @param subject the subject
+     * @return the all persons by subject
+     */
+    Collection<Person> getAllPersonsBySubject(Subject subject);
 
+    /**
+     * Gets all persons.
+     *
+     * @return the all persons
+     */
     Collection<Person> getAllPersons();
 
-    void updatePerson(Person person) throws SQLException;
+    /**
+     * Update person.
+     *
+     * @param person the person
+     */
+    void updatePerson(Person person);
 
-    void deletePerson(Person person) throws SQLException;
+    /**
+     * Delete person.
+     *
+     * @param person the person
+     */
+    void deletePerson(Person person);
 
-    void createPerson(Person person) throws SQLException;
+    /**
+     * Create person.
+     *
+     * @param person the person
+     */
+    void createPerson(Person person);
 
-    Person getPerson(int id) throws SQLException;
+    /**
+     * Gets person.
+     *
+     * @param id the id
+     * @return the person
+     */
+    Person getPerson(int id);
 }
