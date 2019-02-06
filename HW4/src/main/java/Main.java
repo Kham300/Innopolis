@@ -1,8 +1,6 @@
 package main.java;
 
 
-import algorithms.StopWatch;
-
 public class Main {
     /**
      * The constant outputPath.

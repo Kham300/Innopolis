@@ -24,7 +24,7 @@ public class Task implements Callable<ArrayList<String>> {
     }
 
     @Override
-    public ArrayList<String> call() throws Exception {
+    public ArrayList<String> call() {
         List<String> result = new ArrayList<>();
         for (String dataSentence : dataSentences) {
             for (String dataWord : dataWords) {

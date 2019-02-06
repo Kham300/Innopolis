@@ -43,6 +43,7 @@ public class Util {
             for (List<String> list : subSets) {
                 tasks.add(new Task(list, dataWordsFromUrl));
             }
+
             ExecutorService exec = Executors.newFixedThreadPool(numberThreads);
             List<Future<ArrayList<String>>> futures = exec.invokeAll(tasks);
 
