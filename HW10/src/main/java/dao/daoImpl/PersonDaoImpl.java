@@ -1,8 +1,8 @@
 package dao.daoImpl;
 
 import dao.PersonDao;
-import main.java.Person;
-import main.java.Subject;
+import model.Person;
+import model.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,7 +15,7 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * The type Person dao.
+ * The type model.Person dao.
  */
 public class PersonDaoImpl implements PersonDao {
 
@@ -29,7 +29,7 @@ public class PersonDaoImpl implements PersonDao {
     private Connection connection;
 
     /**
-     * Instantiates a new Person dao.
+     * Instantiates a new model.Person dao.
      *
      * @param connection the connection
      */

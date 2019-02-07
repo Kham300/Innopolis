@@ -1,4 +1,4 @@
-package main.java;
+package util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,7 +11,7 @@ public class DBUtil {
     private static String password = "root";
 
 
-    public static Connection getDBConnection() {
+    public Connection getDBConnection() {
         Connection dbConnection = null;
         try {
             Class.forName("org.postgresql.Driver");

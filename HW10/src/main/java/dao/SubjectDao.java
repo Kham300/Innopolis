@@ -1,13 +1,14 @@
 package dao;
 
-import main.java.Person;
-import main.java.Subject;
+
+import model.Person;
+import model.Subject;
 
 import java.sql.SQLException;
 import java.util.Collection;
 
 /**
- * The interface Subject dao.
+ * The interface model.Subject dao.
  */
 public interface SubjectDao {
 

@@ -1,6 +1,6 @@
 package dao.daoImpl;
 
-
+import model.Person;
 import model.Subject;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
@@ -15,11 +15,13 @@ import java.sql.ResultSet;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
-class SubjectDaoImplTest {
+class PersonDaoImplTest {
+
 
     @Mock
     private DBUtil ds;
@@ -30,29 +32,61 @@ class SubjectDaoImplTest {
     @Mock
     private ResultSet rs;
 
-    private Subject subject;
+    private Person p;
+
+    private Subject sub;
+
     @Before
     public void setUp() throws Exception {
         assertNotNull(ds);
         when(c.prepareStatement(any(String.class))).thenReturn(stmt);
         when(ds.getDBConnection()).thenReturn(c);
-        subject = new Subject();
-        subject.setId(1);
-        subject.setDescription("Subject");
+        p = new Person();
+        p.setId(1);
+        p.setName("Johannes");
         when(rs.first()).thenReturn(true);
         when(rs.getInt(1)).thenReturn(1);
-        when(rs.getString(2)).thenReturn(subject.getDescription());
+        when(rs.getString(2)).thenReturn(p.getName());
         when(stmt.executeQuery()).thenReturn(rs);
     }
-    
+
     @Test
-    void getAllSubjects() {
-        assertEquals(2, 2);
+    public void nullCreateThrowsException() {
+        assertThrows(IllegalArgumentException.class, () ->
+                new PersonDaoImpl(ds.getDBConnection()).createPerson(null), "PERSON MUST BE NOT NULL");
     }
 
     @Test
-    void getSubjectsByPerson() {
-        assertEquals(2, 2);
+    public void createPerson() {
+        new PersonDaoImpl(ds.getDBConnection()).createPerson(p);
+    }
 
+    @Test
+    public void createAndRetrievePerson() {
+        PersonDaoImpl dao = new PersonDaoImpl(ds.getDBConnection());
+        dao.createPerson(p);
+        Person r = dao.getPerson(1);
+        assertEquals(p, r);
+    }
+
+    @Test
+    void getAllPersonsBySubject() {
+    }
+
+    @Test
+    void getAllPersons() {
+    }
+
+    @Test
+    void updatePerson() {
+    }
+
+    @Test
+    void deletePerson() {
+    }
+
+
+    @Test
+    void getPerson() {
     }
 }

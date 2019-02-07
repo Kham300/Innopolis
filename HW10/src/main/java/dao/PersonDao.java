@@ -1,12 +1,13 @@
 package dao;
 
-import main.java.Person;
-import main.java.Subject;
+
+import model.Person;
+import model.Subject;
 
 import java.util.Collection;
 
 /**
- * The interface Person dao.
+ * The interface model.Person dao.
  */
 public interface PersonDao {
 

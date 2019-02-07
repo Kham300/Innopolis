@@ -1,4 +1,4 @@
-package main.java;
+package model;
 
 import java.util.Objects;
 
@@ -12,9 +12,13 @@ public class Subject {
         this.description = description;
     }
 
+    public Subject() {
+
+    }
+
     @Override
     public String toString() {
-        return "Subject{" +
+        return "model.Subject{" +
                 "id=" + id +
                 ", description='" + description + '\'' +
                 '}';

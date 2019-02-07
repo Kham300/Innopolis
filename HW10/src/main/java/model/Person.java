@@ -1,4 +1,4 @@
-package main.java;
+package model;
 
 import java.util.Date;
 import java.util.Objects;
@@ -8,6 +8,9 @@ public class Person {
     private int id;
     private String name;
     private Date birthDate;
+
+    public Person() {
+    }
 
     public Person(int id, String name, Date birthDate) {
         this.id = id;
@@ -41,7 +44,7 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Person{" +
+        return "model.Person{" +
                 ", name='" + name + '\'' +
                 ", birthDate=" + birthDate +
                 '}';
