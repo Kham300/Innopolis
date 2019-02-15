@@ -52,7 +52,7 @@ class PersonDaoImplTest {
 
     @Test
     public void nullCreateThrowsException() {
-        assertThrows(IllegalArgumentException.class, () ->
+        assertThrows(NullPointerException.class, () ->
                 new PersonDaoImpl(ds.getDBConnection()).createPerson(null), "PERSON MUST BE NOT NULL");
     }
 

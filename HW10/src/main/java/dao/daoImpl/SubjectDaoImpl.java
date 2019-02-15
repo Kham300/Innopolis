@@ -2,7 +2,7 @@ package dao.daoImpl;
 
 import dao.SubjectDao;
 import model.Person;
-import main.java.Subject;
+import model.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
