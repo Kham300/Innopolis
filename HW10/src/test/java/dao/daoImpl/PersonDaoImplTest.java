@@ -22,7 +22,6 @@ import static org.mockito.Mockito.when;
 @RunWith(MockitoJUnitRunner.class)
 class PersonDaoImplTest {
 
-
     @Mock
     private DBUtil ds;
     @Mock

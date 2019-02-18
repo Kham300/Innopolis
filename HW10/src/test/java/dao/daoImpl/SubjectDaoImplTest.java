@@ -1,53 +1,63 @@
 package dao.daoImpl;
 
 
+import model.Person;
 import model.Subject;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
-import util.DBUtil;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
 
-import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 class SubjectDaoImplTest {
 
     @Mock
-    private DBUtil ds;
-    @Mock
-    private Connection c;
-    @Mock
-    private PreparedStatement stmt;
-    @Mock
-    private ResultSet rs;
+    private static SubjectDaoImpl subjectDao;
 
-    private Subject subject;
+    @Mock
+    private static Subject subject1;
+    @Mock
+    private static Subject subject2;
+    @Mock
+    private static Person person;
+
     @Before
-    public void setUp() throws Exception {
-        assertNotNull(ds);
-        when(c.prepareStatement(any(String.class))).thenReturn(stmt);
-        when(ds.getDBConnection()).thenReturn(c);
-        subject = new Subject();
-        subject.setId(1);
-        subject.setDescription("Subject");
-        when(rs.first()).thenReturn(true);
-        when(rs.getInt(1)).thenReturn(1);
-        when(rs.getString(2)).thenReturn(subject.getDescription());
-        when(stmt.executeQuery()).thenReturn(rs);
+    public void setUp(){
+        //Create mock object of BookDAL
+        subjectDao = mock(SubjectDaoImpl.class);
+
+        subject1 = new Subject(1, "subject1");
+        subject2 = new Subject(2, "subject2");
+
+        person = new Person(1,"Mike", new Date());
+
+        //Stubbing the methods of mocked BookDAL with mocked data.
+        when(subjectDao.getAllSubjects()).thenReturn(Arrays.asList(subject1, subject2));
+        when(subjectDao.getSubjectsByPerson(person)).thenReturn(Arrays.asList(subject1, subject2));
+
     }
     
     @Test
     void getAllSubjects() {
-        assertEquals(2, 2);
+
+        List<Subject> allSubjects = (List<Subject>) subjectDao.getAllSubjects();
+        assertEquals(2, allSubjects.size());
+        Subject subject = allSubjects.get(0);
+        assertEquals(1, subject.getId());
+        assertEquals("subject1", subject.getDescription());
+        Subject subject2 = allSubjects.get(1);
+        assertEquals(2, subject.getId());
+        assertEquals("subject2", subject.getDescription());
+
     }
 
     @Test
